@@ -39,14 +39,12 @@ var Modalje = function(element, cookieName, cookieExpireInMinutes, buttonSelecto
         watch:  function() {
 
             var modal = document.querySelector(element),
-                button = document.querySelector(buttonSelector);
-
-            console.log('closeButton.watch() called');
-            console.log('closeBtnEL ' + closeButton.el);
-            console.log('button ' + button);
+                button = document.querySelector(buttonSelector),
+                html = document.querySelector('html');
 
             button.addEventListener('click', function() {
                 modal.style.visibility = 'hidden';
+                html.classList.remove('modal-is-enabled');
             });
 
         },
@@ -98,9 +96,6 @@ var Modalje = function(element, cookieName, cookieExpireInMinutes, buttonSelecto
     return {
 
         init: function() {
-
-            console.log('cN' + cookieName);
-
 
             if (cookie.exist()) {
                 existingElement.style.visibility = 'hidden';
