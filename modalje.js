@@ -9,10 +9,13 @@
 
 var Modalje = function(element, cookieName, cookieExpireInMinutes, buttonSelector) {
 
+    'use strict';
+    
     var existingElement =  document.querySelector(element),
         html = document.querySelector('html'),
         buttonSelector = buttonSelector || '.modal__close',
-        existingButton = document.querySelector(buttonSelector);
+        existingButton = document.querySelector(buttonSelector),
+        cookieExpireTime;
 
     if (!existingElement) {
         return;
@@ -25,11 +28,11 @@ var Modalje = function(element, cookieName, cookieExpireInMinutes, buttonSelecto
 
     if (!isNaN(cookieExpireInMinutes) && isFinite(cookieExpireInMinutes)) {
 
-        cookieExpireInMinutes = cookieExpireInMinutes;
+        cookieExpireTime = cookieExpireInMinutes;
 
     } else {
 
-        cookieExpireInMinutes = '1440';
+        cookieExpireTime = 1440;
 
     }
 
@@ -45,6 +48,7 @@ var Modalje = function(element, cookieName, cookieExpireInMinutes, buttonSelecto
             button.addEventListener('click', function() {
                 modal.style.visibility = 'hidden';
                 html.classList.remove('modal-is-enabled');
+                cookie.create(cookieExpireTime);
             });
 
         },
@@ -101,7 +105,6 @@ var Modalje = function(element, cookieName, cookieExpireInMinutes, buttonSelecto
                 existingElement.style.visibility = 'hidden';
                 html.classList.remove('modal-is-enabled');
             } else {
-                cookie.create(cookieExpireInMinutes);
                 existingElement.style.visibility = 'visible';
                 html.classList.add('modal-is-enabled');
                 closeButton.watch();
