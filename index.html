@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>CountdownJE!</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" href="countdownJE.css">
+</head>
+<body>
+	<h1>CountdownJE!</h1>
+    <p>Example countdown. End date: 01.01.2020 00:00</p>
+    <ul class="countdown">
+        <li class="countdown__item">
+            <h3 class="countdown__item__title">
+                Days
+            </h3>
+            <div class="countdown__item__value days"></div>
+        </li>
+        <li class="countdown__item">
+            <h3 class="countdown__item__title">
+                Hours
+            </h3>
+            <div class="countdown__item__value hours"></div>
+        </li>
+        <li class="countdown__item">
+            <h3 class="countdown__item__title">
+                Minutes
+            </h3>
+            <div class="countdown__item__value minutes"></div>
+        </li>
+        <li class="countdown__item">
+            <h3 class="countdown__item__title">
+                Seconds
+            </h3>
+            <div class="countdown__item__value seconds"></div>
+        </li>
+    </ul>
+    <script src="countdownJE.js"></script>
+    <script>
+        const countdown = new Countdown('2020/01/01 00:00');
+    </script>
+</body>
+</html>
